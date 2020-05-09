@@ -12,7 +12,7 @@
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Lienol/openwrt-package
-#sed -i '$a src-git lienol https://github.com/TinyTitanPro/lienol-openwrt-package.git' feeds.conf.default
+# sed -i '$a src-git lienol https://github.com/TinyTitanPro/lienol-openwrt-package.git' feeds.conf.default
 
-sed -i '$a src-git OpenAppFilter https://github.com/destan19/OpenAppFilter.git' feeds.conf.default
-
+# Get the below at the main config file
+# sed -i '$a src-git OpenAppFilter https://github.com/destan19/OpenAppFilter.git' feeds.conf.default
