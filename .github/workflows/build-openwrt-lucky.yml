@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt For NewWIFI3
+name: Build OpenWrt For ACRH17
 
 on:
   repository_dispatch:
@@ -63,6 +63,18 @@ jobs:
 
     - name: Clone Smartinfo
       run: git clone https://github.com/iamaluckyguy/luci-app-smartinfo.git openwrt/package/lucky/luci-app-smartinfo
+    
+    - name: Clone KoolproxyR
+      run: git clone https://github.com/jefferymvp/luci-app-koolproxyR.git openwrt/package/lucky/luci-app-koolproxyR
+    
+    - name: Clone PassWall
+      run: git clone https://github.com/xnxy2012/luci-app-passwall.git openwrt/package/lucky/luci-app-passwall
+    
+    - name: Clone OpenClash
+      run: git clone https://github.com/vernesong/OpenClash.git openwrt/package/lucky/OpenClash
+    
+    - name: Clone OpenAppFilter
+      run: git clone https://github.com/destan19/OpenAppFilter.git openwrt/package/lucky/OpenAppFilter
 
     - name: Load custom feeds
       run: |
