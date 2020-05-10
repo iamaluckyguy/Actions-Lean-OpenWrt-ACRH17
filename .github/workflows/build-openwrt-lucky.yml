@@ -103,17 +103,17 @@ jobs:
       uses: P3TERX/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
     
-    - name: Copy .config as seed.config
-      run: |
-        cd openwrt
-        ./scripts/diffconfig.sh > seed.config
+#    - name: Copy .config as seed.config
+#      run: |
+#        cd openwrt
+#        ./scripts/diffconfig.sh > seed.config
         
     - name: Upload Config File to cowtransfer
       if: env.UPLOAD_CONFIG_COWTRANSFER == 'true' && !cancelled()
       run: |
         cd openwrt
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 99 -t 3 --hash --no-progress seed.config 2>&1 | tee cowtransfer.log
+        ./transfer cow --block 2621440 -s -p 99 -t 3 --hash --no-progress .config 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
 
     - name: Upload Config to WeTransfer
@@ -121,7 +121,7 @@ jobs:
       run: |
         cd openwrt
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wet -s -p 16 --no-progress seed.config 2>&1 | tee wetransfer.log
+        ./transfer wet -s -p 16 --no-progress .config 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         
     - name: Download package
