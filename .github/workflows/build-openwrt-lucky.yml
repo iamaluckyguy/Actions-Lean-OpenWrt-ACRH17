@@ -104,8 +104,6 @@ jobs:
     
     - name: Upload config to FTP
       run: |
-#        [ -e files ] && mv files openwrt/files
-#        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P3_SH
         cd openwrt
         ../$DIY_P3_SH
