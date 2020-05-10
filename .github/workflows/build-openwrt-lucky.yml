@@ -16,7 +16,7 @@ on:
     branches:
       - master
     paths:
-      - '.config'
+      - 'acrh17.config'
 #  schedule:
 #    - cron: 0 8 * * 5
   watch:
@@ -26,7 +26,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: acrh17.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   DIY_P3_SH: diy-part3-uploadconfig.sh
@@ -108,6 +108,13 @@ jobs:
         cd openwrt
         ../$DIY_P3_SH
 
+    - name: Upload Config to WeTransfer
+      run: |
+        cd openwrt
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer wet -s -p 16 --no-progress seed.config 2>&1 | tee wetransfer.log
+        echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
+        
     - name: Download package
       id: package
       run: |
