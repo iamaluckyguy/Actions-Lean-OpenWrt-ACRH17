@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#upload config to ftp after menuconfig
+
 ./scripts/diffconfig.sh > seed.config
 
 date=`date +%Y-%m-%d-%H-%M-%S`
