@@ -4,7 +4,8 @@
 
 ./scripts/diffconfig.sh > seed.config
 
-cd openwrt
+# cd openwrt is not necessary as it's config in RUN to cd openwrt
+#cd openwrt
 date=`date +%Y-%m-%d-%H-%M-%S`
 newfilename=seed.config-$date
 
