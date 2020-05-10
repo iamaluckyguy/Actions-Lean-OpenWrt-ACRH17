@@ -7,19 +7,17 @@
 # cd openwrt is not necessary as it's config in RUN to cd openwrt
 #cd openwrt
 date=`date +%Y-%m-%d-%H-%M-%S`
-newfilename=seed.config-$date
+newfilename=seed.config-ACRH17-$date
 
 cp seed.config $newfilename
 
 PUTFILE=$newfilename
 ftp -v -n 34.92.60.168<<EOF
-user yourchinaoffice yourchinaofficeftp
+user Config ConfigUpload
 passive
 binary
 prompt
-
 put $PUTFILE
-
 bye
 #here document
 EOF
